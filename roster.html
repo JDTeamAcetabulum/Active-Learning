@@ -20,12 +20,30 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 
 </head>
 
@@ -136,6 +154,55 @@
                 </div>
                 <!-- /.row -->
 
+                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Section</th>
+                            <th>Average</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student One</td>
+                            <td>A4</td>
+                            <td>90</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                        <tr>
+                            <td>Student Two</td>
+                            <td>A3</td>
+                            <td>75</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                        <tr>
+                            <td>Student Three</td>
+                            <td>D2</td>
+                            <td>82</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                        <tr>
+                            <td>Student Four</td>
+                            <td>C4</td>
+                            <td>96</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                        <tr>
+                            <td>Student Five</td>
+                            <td>A3</td>
+                            <td>85</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                        <tr>
+                            <td>Student Six</td>
+                            <td>D2</td>
+                            <td>88</td>
+                            <td><a href="statistics.html">Statistics</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
             <!-- /.container-fluid -->
 
@@ -144,12 +211,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
 </body>
 
