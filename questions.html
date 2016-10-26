@@ -20,8 +20,6 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
-
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -32,9 +30,37 @@
 
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            var table = $('#example').DataTable();
+            $('#example tbody').on('click', 'tr', function() {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+            $('#delete').click(function() {
+                table.row('.selected').remove().draw(false);
+            });
+            $('#edit').click(function() {
+                console.log(table.row('.selected').data());
+            });
+            $('#create').click(function() {
+                var now = new Date();
+                table.row.add([
+                    '<a href="questions/new.html">New Question</a>',
+                    now.getFullYear()
+                    + '-' + (now.getMonth() < 10 ? "0" + now.getMonth() : now.getMonth())
+                    + '-' + (now.getDate() < 10 ? "0" + now.getDate() : now.getDate())
+                    + ' ' + (now.getHours() < 10 ? "0" + now.getHours() : now.getHours())
+                    + ':' + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes()),
+                    'Topic'
+                    ]).draw(false);
+            });
         } );
     </script>
 
@@ -149,7 +175,7 @@
 
 
 
-                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Question</th>
@@ -190,6 +216,12 @@
                         </tr>
                     </tbody>
                 </table>
+                
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-danger pull-right" id="delete">Delete</button>
+                    <button type="button" class="btn btn-primary pull-right" id="edit">Edit</button>
+                    <button type="button" class="btn btn-success pull-right" id="create">Create New</button>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
