@@ -34,7 +34,12 @@
 
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('.list-group li').click(function(e) {
+                e.preventDefault()
+
+                $(this).parent().find('li').removeClass('active');
+                $(this).addClass('active');
+            })
         } );
     </script>
 
@@ -105,11 +110,13 @@
 
                         <p>Topic: Sorting</p>
 
-                        <ol class="list-unstyled">
-                          <li><button type="button" class="btn btn-default">1</button> Yes</li>
-                          <li><button type="button" class="btn btn-default">2</button> No</li>
-                          <li><button type="button" class="btn btn-default">3</button> Not enough information</li>
-                        </ol>
+                        <ul class="list-group">
+                            <li class="list-group-item active">Yes</li>
+                            <li class="list-group-item">No</li>
+                            <li class="list-group-item">Not enough information</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="pnp-results.html">Submit</a>
                     </div>
                 </div>
                 <!-- /.row -->

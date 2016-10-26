@@ -34,7 +34,12 @@
 
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('.list-group li').click(function(e) {
+                e.preventDefault()
+
+                $(this).parent().find('li').removeClass('active');
+                $(this).addClass('active');
+            })
         } );
     </script>
 
@@ -105,10 +110,12 @@
 
                         <p>Topic: Data Structures</p>
 
-                        <ol class="list-unstyled">
-                          <li><button type="button" class="btn btn-default">1</button> Yes, hash functions should be able to return all values with uniform probability.</li>
-                          <li><button type="button" class="btn btn-default">2</button> No, a hash function must return the same value for objects considered equal.</li>
-                        </ol>
+                        <ul class="list-group">
+                            <li class="list-group-item active">Yes, hash functions should be able to return all values with uniform probability.</li>
+                            <li class="list-group-item">No, a hash function must return the same value for objects considered equal.</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="hash-results.html">Submit</a>
                     </div>
                 </div>
                 <!-- /.row -->

@@ -34,7 +34,12 @@
 
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('.list-group li').click(function(e) {
+                e.preventDefault()
+
+                $(this).parent().find('li').removeClass('active');
+                $(this).addClass('active');
+            })
         } );
     </script>
 
@@ -79,7 +84,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li><a href="../index.html"><i class="fa fa-fw fa-home"></i> Course Home</a></li>
-                    <li class="active"><a href="../questions.html"><i class="fa fa-fw fa-question-circle"></i> Questions</a></li>
+                    <li class="active"><a href="../questions-edited.html"><i class="fa fa-fw fa-question-circle"></i> Questions</a></li>
                     <li><a href="../review.html"><i class="fa fa-fw fa-edit"></i> Review</a></li>
                     <li><a href="../statistics.html"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a></li>
                     <li><a href="../roster.html"><i class="fa fa-fw fa-desktop"></i> Roster</a></li>
@@ -105,12 +110,14 @@
 
                         <p>Topic: Colors</p>
 
-                        <ol class="list-unstyled">
-                        <li><button type="button" class="btn btn-default">1</button> Blue</li>
-                        <li><button type="button" class="btn btn-default">2</button> Orange</li>
-                        <li><button type="button" class="btn btn-default">3</button> Lavender</li>
-                        <li><button type="button" class="btn btn-default">4</button> Tomato</li>
-                        </ol>
+                        <ul class="list-group">
+                            <li class="list-group-item active">Blue</li>
+                            <li class="list-group-item">Orange</li>
+                            <li class="list-group-item">Lavender</li>
+                            <li class="list-group-item">Tomato</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="new-results.html">Submit</a>
                     </div>
                 </div>
                 <!-- /.row -->

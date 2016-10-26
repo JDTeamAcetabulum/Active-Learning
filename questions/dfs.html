@@ -34,7 +34,12 @@
 
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('.list-group li').click(function(e) {
+                e.preventDefault()
+
+                $(this).parent().find('li').removeClass('active');
+                $(this).addClass('active');
+            })
         } );
     </script>
 
@@ -105,13 +110,15 @@
 
                         <p>Topic: Graph Theory</p>
 
-                        <ol class="list-unstyled">
-                          <li><button type="button" class="btn btn-default">1</button> <code>O(|V|)</code></li>
-                          <li><button type="button" class="btn btn-default">2</button> <code>O(|V|^2)</code></li>
-                          <li><button type="button" class="btn btn-default">3</button> <code>O(|V|+|E|)</code></li>
-                          <li><button type="button" class="btn btn-default">4</button> <code>O(|E|)</code></li>
-                          <li><button type="button" class="btn btn-default">5</button> <code>O(|E|^2)</code></li>
-                        </ol>
+                        <ul class="list-group">
+                            <li class="list-group-item active"><code>O(|V|)</code></li>
+                            <li class="list-group-item"><code>O(|V|^2)</code></li>
+                            <li class="list-group-item"><code>O(|V|+|E|)</code></li>
+                            <li class="list-group-item"><code>O(|E|)</code></li>
+                            <li class="list-group-item"><code>O(|E|^2)</code></li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="dfs-results.html">Submit</a>
                     </div>
                 </div>
                 <!-- /.row -->

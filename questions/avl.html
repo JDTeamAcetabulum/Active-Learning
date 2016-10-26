@@ -34,7 +34,12 @@
 
     <script type="text/javascript" class="init">
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('.list-group li').click(function(e) {
+                e.preventDefault()
+
+                $(this).parent().find('li').removeClass('active');
+                $(this).addClass('active');
+            })
         } );
     </script>
 
@@ -105,11 +110,13 @@
 
                         <p>Topic: Data Structures</p>
 
-                        <ol class="list-unstyled">
-                          <li><button type="button" class="btn btn-default">1</button> Yes, it is a type of self-balancing tree.</li>
-                          <li><button type="button" class="btn btn-default">2</button> No, but the program using it can balance it by manipulating the nodes.</li>
-                          <li><button type="button" class="btn btn-default">3</button> No, but the program using it can balance it by inserting data such that the tree remains balanced.</li>
-                        </ol>
+                        <ul class="list-group">
+                            <li class="list-group-item active">Yes, it is a type of self-balancing tree.</li>
+                            <li class="list-group-item">No, but the program using it can balance it by manipulating the nodes.</li>
+                            <li class="list-group-item">No, but the program using it can balance it by inserting data such that the tree remains balanced.</li>
+                        </ul>
+
+                        <a class="btn btn-primary" href="avl-results.html">Submit</a>
                     </div>
                 </div>
                 <!-- /.row -->
