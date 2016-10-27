@@ -32,6 +32,12 @@
 
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+    <script src="https://d3js.org/d3.v2.min.js"></script>
+
+    <script src="../js/xcharts.min.js"></script>
+
+    <link href="../css/xcharts.min.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" class="init">
         $(document).ready(function() {
             $('.list-group li').click(function(e) {
@@ -114,14 +120,40 @@
 
                         <p>Topic: Colors</p>
 
-                        <ul class="list-group">
-                            <li class="list-group-item active">Blue</li>
-                            <li class="list-group-item">Orange</li>
-                            <li class="list-group-item">Lavender</li>
-                            <li class="list-group-item">Tomato</li>
-                        </ul>
+                        <figure style="width:400px; height:400px;" id="myChart" ></figure>
 
-                        <a class="btn btn-primary" href="new-results-student.html">Submit</a>
+                        <script>
+                            var data = {
+                              "xScale": "ordinal",
+                              "yScale": "linear",
+                              "main": [
+                                {
+                                  "className": ".color",
+                                  "data": [
+                                    {
+                                      "x": "Blue",
+                                      "y": 1
+                                    },
+                                    {
+                                      "x": "Orange",
+                                      "y": 0
+                                    },
+                                    {
+                                      "x": "Lavender",
+                                      "y": 0
+                                    },
+                                    {
+                                      "x": "Tomato",
+                                      "y": 0
+                                    }
+                                  ]
+                                }
+                              ]
+                            };
+                            var myChart = new xChart('bar', data, '#myChart');
+                        </script>
+
+                        <a class="btn btn-primary" href="../questions-student-edited.html">Back</a>
                     </div>
                 </div>
                 <!-- /.row -->
