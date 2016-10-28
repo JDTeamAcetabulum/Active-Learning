@@ -32,6 +32,12 @@
 
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+    <script src="js/xcharts.min.js"></script>
+
+    <link href="css/xcharts.min.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" class="init">
         $(document).ready(function() {
             $('#example').DataTable();
@@ -143,6 +149,76 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+
+                <div class="btn-group-vertical pull-left">
+                    <a type="button" class="btn btn-primary" href="statistics.html">Average</button>
+                    <a type="button" class="btn btn-default" href="statistics2.html">Amount Retried</button>
+                    <a class="btn btn-default" href="statistics3.html">By Topic</a>
+                </div>
+
+                <figure class="container-fluid pull-left" style="width:800px; height:400px;" id="myChart" ></figure>
+                <script>
+                var tt = document.createElement('div'),
+                  leftOffset = -(~~$('html').css('padding-left').replace('px', '') + ~~$('body').css('margin-left').replace('px', '')),
+                  topOffset = -32;
+                tt.className = 'ex-tooltip';
+                document.body.appendChild(tt);
+
+                var data = {
+                  "xScale": "time",
+                  "yScale": "linear",
+                  "main": [
+                    {
+                      "className": ".questions",
+                      "data": [
+                        {
+                          "x": "2012-11-9",
+                          "y": 60
+                        },
+                        {
+                          "x": "2012-11-12",
+                          "y": 60
+                        },
+                        {
+                          "x": "2012-11-14",
+                          "y": 80
+                        },
+                        {
+                          "x": "2012-11-16",
+                          "y": 30
+                        },
+                        {
+                          "x": "2012-11-19",
+                          "y": 40
+                        },
+                        {
+                          "x": "2012-11-21",
+                          "y": 90
+                        },
+                        {
+                          "x": "2012-11-23",
+                          "y": 60
+                        }
+                      ]
+                    }
+                  ]
+                };
+                var opts = {
+                  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+                  "tickFormatX": function (x) { return d3.time.format('%Y-%m-%d')(x); },
+                  "mouseover": function (d, i) {
+                    var pos = $(this).offset();
+                    $(tt).text(d3.time.format('%Y-%m-%d')(d.x) + ': ' + d.y)
+                      .css({top: topOffset + pos.top, left: pos.left + leftOffset})
+                      .show();
+                  },
+                  "mouseout": function (x) {
+                    $(tt).hide();
+                  }
+                };
+                var myChart = new xChart('line-dotted', data, '#myChart', opts);
+            </script>
 
             </div>
             <!-- /.container-fluid -->

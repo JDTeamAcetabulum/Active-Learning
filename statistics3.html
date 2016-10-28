@@ -32,6 +32,12 @@
 
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+    <script src="js/xcharts.min.js"></script>
+
+    <link href="css/xcharts.min.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" class="init">
         $(document).ready(function() {
             $('#example').DataTable();
@@ -89,13 +95,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index-student.html"><i class="fa fa-fw fa-home"></i> Course Home</a>
+                        <a href="index.html"><i class="fa fa-fw fa-home"></i> Course Home</a>
                     </li>
                     <li>
-                        <a href="questions-student.html"><i class="fa fa-fw fa-question-circle"></i> Questions</a>
+                        <a href="questions.html"><i class="fa fa-fw fa-question-circle"></i> Questions</a>
                     </li>
                     <li  class="active">
-                        <a href="statistics-student.html"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                        <a href="statistics.html"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                    </li>
+                    <li>
+                        <a href="roster.html"><i class="fa fa-fw fa-desktop"></i> Roster</a>
                     </li>
                     <!--<li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
@@ -141,12 +150,14 @@
                 </div>
                 <!-- /.row -->
 
+
                 <div class="btn-group-vertical pull-left">
-                    <a type="button" class="btn btn-primary" href="statistics-student.html">Rolling Average</button>
-                    <a type="button" class="btn btn-default" href="#">Other</button>
+                    <a type="button" class="btn btn-default" href="statistics.html">Average</button>
+                    <a type="button" class="btn btn-default" href="statistics2.html">Amount Retried</button>
+                    <a class="btn btn-primary" href="statistics3.html">By Topic</a>
                 </div>
 
-                <figure class="container-fluid pull-left" style="width:800px; height:400px;" id="myChart" ></figure>
+                    <figure class="container-fluid pull-left" style="width:800px; height:400px;" id="myChart" ></figure>
                 <script>
                 var tt = document.createElement('div'),
                   leftOffset = -(~~$('html').css('padding-left').replace('px', '') + ~~$('body').css('margin-left').replace('px', '')),
@@ -162,52 +173,33 @@
                       "className": ".questions",
                       "data": [
                         {
-                          "x": "2012-11-9",
+                          "x": "Colors",
                           "y": 60
                         },
                         {
-                          "x": "2012-11-12",
+                          "x": "Graph Theory",
                           "y": 60
                         },
                         {
-                          "x": "2012-11-14",
+                          "x": "Algorithms",
                           "y": 80
                         },
                         {
-                          "x": "2012-11-16",
+                          "x": "Sorting",
                           "y": 30
-                        },
-                        {
-                          "x": "2012-11-19",
-                          "y": 40
-                        },
-                        {
-                          "x": "2012-11-21",
-                          "y": 90
-                        },
-                        {
-                          "x": "2012-11-23",
-                          "y": 60
                         }
                       ]
                     }
                   ]
                 };
+                var topicOrdinal = ["Colors", "Graph Theory", "Algorithms", "Sorting"];
                 var opts = {
-                  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
-                  "tickFormatX": function (x) { return d3.time.format('%Y-%m-%d')(x); },
-                  "mouseover": function (d, i) {
-                    var pos = $(this).offset();
-                    $(tt).text(d3.time.format('%Y-%m-%d')(d.x) + ': ' + d.y)
-                      .css({top: topOffset + pos.top, left: pos.left + leftOffset})
-                      .show();
-                  },
-                  "mouseout": function (x) {
-                    $(tt).hide();
-                  }
+                  "dataFormatX": function (x) { return topicOrdinal.indexOf(String(x)); },
+                  "tickFormatX": function (x) { return topicOrdinal[x.valueOf()]; },
                 };
                 var myChart = new xChart('line-dotted', data, '#myChart', opts);
             </script>
+
             </div>
             <!-- /.container-fluid -->
 
